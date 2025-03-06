@@ -3,6 +3,7 @@
 Qualquer Smartphone Samsung se beneficia deste programa deixando até 100% mais rápido e consumindo menos bateria.
 
 * Necessário ter o adb (android-tools) instalado em sua distribuição GNU/Linux.
+* APLICATIVOS que você instaladou por conta não serão removidos! 
 
 ## Instalar e Executar.
 ```
