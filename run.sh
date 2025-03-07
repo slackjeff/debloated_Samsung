@@ -156,7 +156,7 @@ cat <<EOF
  4) - Limpeza Pesada    - !!! Otimização máxima do sistema !!!
  5) - Sair
 EOF
-read -p $'\n Escolha [1-5]: ' menu
+read -r -p $'\n Escolha [1-5]: ' menu
 case $menu in
     1) TWEAKS ;;
     2) BASIC ;;
