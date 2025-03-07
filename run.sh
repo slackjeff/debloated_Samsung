@@ -33,47 +33,108 @@ echo
 
 
 ######## Functions
-function TWEAKS(){
 
-    echo "++++++++ Melhore a Bateria, Performance e desative os Apps GOS."
-    while read -r command; do
-            echo "Comando: $command"
-            adb shell -n settings put global $command
-    done < "conf/tweaks.conf"
+# Mensagem de erro
+function DIE() {
+    echo "ERRO: $*" >&2
+    exit 1
 }
 
+# Ajustes Iniciais
+function TWEAKS(){
+    local conf_path="conf/tweaks.conf"
+    local conf_fullpath="${PWD}/${conf_path}"
+    local command
+
+    # Verificando se o arquivo "$conf_fullpath" existe
+    [[ -e "$conf_fullpath" ]] ||
+        DIE "O arquivo de configuração $conf_fullpath não foi encontrado."
+
+    echo "++++++++ Melhore a Bateria, Performance e desative os Apps GOS."
+    sleep 1s
+    while read -r command; do
+            echo "[ADB] Executando: uninstall $command"
+            adb shell -n settings put global $command
+    done < "$conf_fullpath"
+
+    echo
+    echo "Função 'Ajustes Iniciais' finalizado com êxito."
+    echo
+}
+
+# Limpeza Básica
 function BASIC() {
+    local conf_path="conf/basic.conf"
+    local conf_fullpath="${PWD}/${conf_path}"
+    local command
+
+    # Verificando se o arquivo "$conf_fullpath" existe
+    [[ -e "$conf_fullpath" ]] ||
+        DIE "O arquivo de configuração $conf_fullpath não foi encontrado."
+
     echo "+++++++++++++++ Limpeza Básica"
     sleep 1s
     while read -r command; do
         # Ignora linhas que começam com # ou contêm a palavra 'others'
-        echo "Comando: $command"
+        echo "[ADB] Executando: uninstall $command"
         adb shell -n pm uninstall --user 0 $command
-    done < "conf/basic.conf"
+    done < "$conf_fullpath"
 
+    echo
+    echo "Função 'Limpeza Básica' finalizado com êxito."
+    echo
 }
 
+# Limpeza Moderada
 function LIGHT() {
+    local conf_path="conf/light.conf"
+    local conf_fullpath="${PWD}/${conf_path}"
+    local command
+
+    # Verificando se o arquivo "$conf_fullpath" existe
+    [[ -e "$conf_fullpath" ]] ||
+        DIE "O arquivo de configuração $conf_fullpath não foi encontrado."
+
     echo "+++++++++++++++ Limpeza Moderada"
     sleep 1s
     while read -r command; do
         # Ignora linhas que começam com # ou contêm a palavra 'others'
-        echo "Comando: $command"
+        echo "[ADB] Executando: uninstall $command"
         adb shell -n pm uninstall --user 0 $command
-    done < "conf/light.conf"
+    done < "$conf_fullpath"
+
+    echo
+    echo "Função 'Limpeza Moderada' finalizado com êxito."
+    echo
 }
 
+# Limpeza Pesada
 function HEAVY() {
+    local conf_path="conf/heavy.conf"
+    local conf_fullpath="${PWD}/${conf_path}"
+    local command
+
+    # Verificando se o arquivo "$conf_fullpath" existe
+    [[ -e "$conf_fullpath" ]] ||
+        DIE "O arquivo de configuração $conf_fullpath não foi encontrado."
 
     echo "+++++++++++++++ Limpeza Pesada"
     sleep 1s
     while read -r command; do
         # Ignora linhas que começam com # ou contêm a palavra 'others'
-        echo "Comando: $command"
+        echo "[ADB] Executando: uninstall $command"
         adb shell -n pm uninstall --user 0 $command
-    done < "conf/heavy.conf"
+    done < "$conf_fullpath"
+
+    echo "[ADB] Executando: install-existing com.sec.android.soagent"
     adb shell cmd package install-existing com.sec.android.soagent
+
+    echo "[ADB] Executando: install-existing com.sec.android.systemupdate"
     adb shell cmd package install-existing com.sec.android.systemupdate
+
+    echo
+    echo "Função 'Limpeza Pesada' finalizado com êxito."
+    echo
 }
 
 ########## Main
