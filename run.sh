@@ -54,7 +54,7 @@ function TWEAKS(){
     sleep 1s
     while read -r command; do
             echo "[ADB] Executando: uninstall $command"
-            adb shell -n settings put global $command
+            adb shell -n settings put global "$command"
     done < "$conf_fullpath"
 
     echo
@@ -77,7 +77,7 @@ function BASIC() {
     while read -r command; do
         # Ignora linhas que começam com # ou contêm a palavra 'others'
         echo "[ADB] Executando: uninstall $command"
-        adb shell -n pm uninstall --user 0 $command
+        adb shell -n pm uninstall --user 0 "$command"
     done < "$conf_fullpath"
 
     echo
@@ -100,7 +100,7 @@ function LIGHT() {
     while read -r command; do
         # Ignora linhas que começam com # ou contêm a palavra 'others'
         echo "[ADB] Executando: uninstall $command"
-        adb shell -n pm uninstall --user 0 $command
+        adb shell -n pm uninstall --user 0 "$command"
     done < "$conf_fullpath"
 
     echo
@@ -123,7 +123,7 @@ function HEAVY() {
     while read -r command; do
         # Ignora linhas que começam com # ou contêm a palavra 'others'
         echo "[ADB] Executando: uninstall $command"
-        adb shell -n pm uninstall --user 0 $command
+        adb shell -n pm uninstall --user 0 "$command"
     done < "$conf_fullpath"
 
     echo "[ADB] Executando: install-existing com.sec.android.soagent"
@@ -156,7 +156,7 @@ cat <<EOF
  4) - Limpeza Pesada    - !!! Otimização máxima do sistema !!!
  5) - Sair
 EOF
-read -p $'\n Escolha [1-5]: ' menu
+read -r -p $'\n Escolha [1-5]: ' menu
 case $menu in
     1) TWEAKS ;;
     2) BASIC ;;
