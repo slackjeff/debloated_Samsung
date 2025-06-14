@@ -1,6 +1,6 @@
 # Debloat Samsung devices
 
-Qualquer Smartphone Samsung se beneficia deste programa deixando até 100% mais rápido e consumindo menos bateria.
+Qualquer Smartphone Samsun se beneficia deste programa deixando até 100% mais rápido e consumindo menos bateria.
 
 * Necessário ter o [adb](https://developer.android.com/tools/adb) (android-tools) instalado em sua distribuição GNU/Linux.
 * Opção do desenvolvedor [HABILITADO em seu celular]
