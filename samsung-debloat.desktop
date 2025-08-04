@@ -1,0 +1,49 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+
+# Nome do app
+
+Name=Samsung Debloat
+Name[pt_BR]=Remover Bloatware Samsung
+Name[en]=Samsung Debloat
+Name[es]=Eliminar Bloatware de Samsung
+Name[fr]=Suppression des Bloatwares Samsung
+Name[de]=Samsung Bloatware entfernen
+Name[it]=Rimozione Bloatware Samsung
+
+# Comentários/descrição
+
+Comment=Remove legacy Samsung bloatware via ADB
+Comment[pt_BR]=Remove aplicativos desnecessários da Samsung usando ADB
+Comment[en]=Remove preinstalled Samsung apps using ADB
+Comment[es]=Elimina apps preinstaladas de Samsung usando ADB
+Comment[fr]=Supprime les applications préinstallées de Samsung via ADB
+Comment[de]=Entfernt vorinstallierte Samsung-Apps über ADB
+Comment[it]=Rimuove le app preinstallate Samsung tramite ADB
+
+# Caminho do script (ajuste conforme necessário)
+
+Exec=./run.sh
+
+# Ícone (substitua se quiser usar um ícone personalizado)
+
+Icon=phone
+
+Terminal=true
+StartupNotify=false
+
+# Categoria de menu
+
+Categories=Utility;System;
+
+# Palavras-chave
+
+Keywords=Samsung;Debloat;Android;ADB;Bloatware;Remove
+Keywords[pt_BR]=Samsung;Remover;Android;ADB;Bloatware;Desinstalar;Desativar
+Keywords[en]=Samsung;Remove;Android;ADB;Bloatware;Uninstall;Disable
+Keywords[es]=Samsung;Eliminar;Android;ADB;Bloatware;Desinstalar;Desactivar
+Keywords[fr]=Samsung;Supprimer;Android;ADB;Bloatware;Désinstaller;Désactiver
+Keywords[de]=Samsung;Entfernen;Android;ADB;Bloatware;Deinstallieren;Deaktivieren
+Keywords[it]=Samsung;Rimuovere;Android;ADB;Bloatware;Disinstallare;Disattivare
+
