@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 ###########################################################################
 # Adjust for Linux Distribuitions by Slackjeff.
 #
@@ -9,7 +10,33 @@ clear
 
 # ----------------------------------------------------------------------------------------
 
-echo -e "
+# Uso de cores para destacar
+
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+RESET='\033[0m'
+
+# ----------------------------------------------------------------------------------------
+
+# Habilita log de saída para arquivo
+
+LOGFILE="debloat_$(date +%F_%H%M%S).log"
+
+exec > >(tee -a "$LOGFILE") 2>&1
+
+# Exibe onde o log está sendo salvo
+
+echo -e "\n📄 Log será salvo em: $LOGFILE\n"
+
+# ----------------------------------------------------------------------------------------
+
+echo -e "${GREEN}Tudo pronto para começar!${RESET}"
+
+echo -e "${RED}⚠️ Use por sua conta e risco!${RESET}"
+
+
+echo -e "${RED}
 === Iniciando desbloat de apps legados Samsung ===
 
 Para remover bloatware de aparelhos Samsung com Android 
@@ -22,7 +49,6 @@ Para remover bloatware de aparelhos Samsung com Android
 
     Este script deve ser executado com o dispositivo conectado via USB, com a depuração USB ativada e com o ADB configurado no seu sistema.
     
-Faça por sua conta e risco.
 
 
 🔁 Reverter mudanças?
@@ -33,7 +59,9 @@ adb shell cmd package install-existing com.nome.do.pacote
 
 
 Enter para continuar...
-"
+
+${RESET}"
+
 read pausa
 
 # ----------------------------------------------------------------------------------------
@@ -42,29 +70,53 @@ read pausa
 
 if ! which adb 1>/dev/null 2>/dev/null; then
 
-    echo -e "\nErro. Instale o adb (android-tools).\n"
+    echo -e "${RED}\nErro. Instale o adb (android-tools).\n ${RESET}"
     
     exit 1
     
 else
 
+# ----------------------------------------------------------------------------------------
+
+ # Verificar permissão do ADB
+
+ # Antes de qualquer ação com o ADB, adicione:
+
+ adb devices | grep -q "unauthorized" && \
+  DIE "Dispositivo não autorizado. Autorize o dispositivo na tela do seu celular."
+  
+# ----------------------------------------------------------------------------------------
+
+  
     # Start server.
+    
     adb start-server
     
 fi
 
 # ----------------------------------------------------------------------------------------
 
+# 📁 Organização de Arquivos
+
+# Checar existência da pasta conf/
+
+# Antes de qualquer função:
+
+[[ -d "conf" ]] || DIE "Pasta 'conf/' não encontrada no diretório atual." && exit
+
+# ----------------------------------------------------------------------------------------
+
 echo "+---------------------------------------------+"
 
-echo "Checando os dispositivos conectados..."
+echo -e "${GREEN}\nChecando os dispositivos conectados...\n ${RESET}"
 
 # Check if have devices.
 
 output=$(adb devices | tail -n +2)
+
 if [[ -z "$output" ]]; then
 
-    echo -e "\nNão encontrei nenhum dispositivo. Plugue seu celular no computador.\n"
+    echo -e "${RED}\nNão encontrei nenhum dispositivo. Plugue seu celular no computador. \n ${RESET}"
     
     echo "+---------------------------------------------+"
     
@@ -73,7 +125,7 @@ fi
 
 output=${output//device}
 
-echo -e "\nDispositivos ----> $output\n"
+echo -e "${GREEN}\nDispositivos ----> $output \n ${RESET}"
 
 echo -e "\n+---------------------------------------------+\n"
 
@@ -85,7 +137,7 @@ echo -e "\n+---------------------------------------------+\n"
 
 function DIE() {
 
-    echo -e "\nERRO: $* \n" >&2
+    echo -e "${RED}\nERRO: $* \n ${RESET}" >&2
     
     exit 1
 }
@@ -105,20 +157,20 @@ function TWEAKS(){
     [[ -e "$conf_fullpath" ]] ||
         DIE "O arquivo de configuração $conf_fullpath não foi encontrado."
 
-    echo -e "\n++++++++ Melhore a Bateria, Performance e desative os Apps GOS. \n"
+    echo -e "${GREEN}\n++++++++ Melhore a Bateria, Performance e desative os Apps GOS. \n ${RESET}"
     
     sleep 1s
     
     while read -r command; do
     
-            echo -e "\n[ADB] Executando: uninstall $command \n"
+            echo -e "${GREEN}\n[ADB] Executando: uninstall $command \n ${RESET}"
             
             adb shell -n settings put global "$command"
             
     done < "$conf_fullpath"
 
 
-    echo -e "\nFunção 'Ajustes Iniciais' finalizado com êxito. \n"
+    echo -e "${GREEN}\nFunção 'Ajustes Iniciais' finalizado com êxito. \n ${RESET}"
 
 }
 
@@ -137,7 +189,7 @@ function BASIC() {
     [[ -e "$conf_fullpath" ]] ||
         DIE "O arquivo de configuração $conf_fullpath não foi encontrado."
 
-    echo -e "\n+++++++++++++++ Limpeza Básica \n"
+    echo -e "${GREEN}\n+++++++++++++++ Limpeza Básica \n ${RESET}"
     
     sleep 1s
     
@@ -145,7 +197,7 @@ function BASIC() {
     
         # Ignora linhas que começam com # ou contêm a palavra 'others'
         
-        echo -e "\n[ADB] Executando: uninstall $command \n"
+        echo -e "${GREEN}\n[ADB] Executando: uninstall $command \n ${RESET}"
         
         adb shell -n pm uninstall --user 0 "$command"
         
@@ -163,17 +215,22 @@ function BASIC() {
     [[ -e "$conf_fullpath" ]] ||
         DIE "O arquivo de configuração $conf_fullpath não foi encontrado."
 
-    echo -e "\n+++++++++++++++ Limpeza de Apps legados da Samsung e de operadoras \n"
+    echo -e "${GREEN}\n+++++++++++++++ Limpeza de Apps legados da Samsung e de operadoras \n ${RESET}"
     
     sleep 1s
-    
+
+
+    # Tratar arquivos de configuração com comentários.
+
     while read -r command; do
     
-        # Ignora linhas que começam com # ou contêm a palavra 'others'
+        # Ignorar comentários e linhas vazias nos .conf.
         
-        echo "Desinstalando: $command"
+        # [[ "$command" =~ ^#.*$ || -z "$command" ]] && continue
+         
+        echo -e "${GREEN}\nDesinstalando: $command \n ${RESET}"
         
-        echo -e "\n[ADB] Executando: uninstall $command \n"
+        echo -e "${GREEN}\n[ADB] Executando: uninstall $command \n ${RESET}"
         
         adb shell -n pm uninstall --user 0 "$command"
         
@@ -181,9 +238,9 @@ function BASIC() {
 
 # ----------------------------------------------------------------------------------------
 
-    echo -e "\nFunção 'Limpeza Básica' finalizado com êxito. \n"
+     echo -e "${GREEN}\nbFunção 'Limpeza Básica' finalizado com êxito.  \n ${RESET}"
 
-    echo "=== Fim do processo. Reinicie o aparelho para aplicar ==="
+     echo -e "${RED}\n=== Fim do processo. Reinicie o aparelho para aplicar ===\n ${RESET}"
 
 }
 
@@ -202,7 +259,7 @@ function LIGHT() {
     [[ -e "$conf_fullpath" ]] ||
         DIE "O arquivo de configuração $conf_fullpath não foi encontrado."
 
-    echo -e "\n+++++++++++++++ Limpeza Moderada \n"
+    echo -e "${GREEN}\n+++++++++++++++ Limpeza Moderada \n ${RESET}"
     
     sleep 1s
     
@@ -210,15 +267,17 @@ function LIGHT() {
     
         # Ignora linhas que começam com # ou contêm a palavra 'others'
         
-        echo -e "\n[ADB] Executando: uninstall $command \n"
+        echo -e "${GREEN}\n[ADB] Executando: uninstall $command \n ${RESET}"
         
         adb shell -n pm uninstall --user 0 "$command"
         
     done < "$conf_fullpath"
 
 
-    echo -e "\nFunção 'Limpeza Moderada' finalizado com êxito. \n"
+    echo -e "${GREEN}\nFunção 'Limpeza Moderada' finalizado com êxito. \n ${RESET}"
 
+    # echo -e "\n${GREEN}Desbloat finalizado com sucesso.${RESET}"
+    echo -e "Considere reiniciar o dispositivo.\n"
 }
 
 # ----------------------------------------------------------------------------------------
@@ -236,31 +295,53 @@ function HEAVY() {
     [[ -e "$conf_fullpath" ]] ||
         DIE "O arquivo de configuração $conf_fullpath não foi encontrado."
 
-    echo -e "\n+++++++++++++++ Limpeza Pesada \n"
+# ----------------------------------------------------------------------------------------
+
+# Confirmar antes de "HEAVY"
+
+read -r -p "Você tem certeza que quer aplicar a limpeza pesada? (s/N): " confirm
+
+[[ "$confirm" =~ ^[sS]$ ]] || exit 1
+
+# ----------------------------------------------------------------------------------------
+
+    echo -e "${YELLOW}+++ Iniciando Limpeza Pesada +++${RESET}"
+    
+    # echo -e "${GREEN}\n+++++++++++++++ Limpeza Pesada \n ${RESET}"
     
     sleep 1s
+
+    read -r -p "Tem certeza? Essa ação é irreversível (s/N): " sure
+    [[ "$sure" =~ ^[sS]$ ]] || return
     
     while read -r command; do
-    
+
         # Ignora linhas que começam com # ou contêm a palavra 'others'
         
-        echo -e "\n[ADB] Executando: uninstall $command \n"
+        # [[ "$command" =~ ^#.*$ || -z "$command" ]] && continue
+
+              
+        echo -e "${GREEN}\n[ADB] Executando: uninstall $command \n ${RESET}"
         
         adb shell -n pm uninstall --user 0 "$command"
         
     done < "$conf_fullpath"
 
-    echo -e "\n[ADB] Executando: install-existing com.sec.android.soagent \n"
+    echo -e "${GREEN}\n[ADB] Executando: install-existing com.sec.android.soagent \n ${RESET}"
     
     adb shell cmd package install-existing com.sec.android.soagent
 
-    echo -e "\n[ADB] Executando: install-existing com.sec.android.systemupdate \n"
+    echo -e "${GREEN}\n[ADB] Executando: install-existing com.sec.android.systemupdate \n ${RESET}"
     
     adb shell cmd package install-existing com.sec.android.systemupdate
 
 
-    echo -e "\nFunção 'Limpeza Pesada' finalizado com êxito. \n"
+    echo -e "${GREEN}Limpeza pesada finalizada com êxito.${RESET}"
+    
+    # echo -e "${GREEN}\nFunção 'Limpeza Pesada' finalizado com êxito. \n ${RESET}"
 
+    # echo -e "\n${GREEN}Desbloat finalizado com sucesso.${RESET}"
+    echo -e "Considere reiniciar o dispositivo.\n"
 }
 
 # ----------------------------------------------------------------------------------------
@@ -293,8 +374,8 @@ case $menu in
     3) LIGHT ;;
     4) HEAVY ;;
     5) exit 0 ;;
-    [a-zA-Z]) echo "Somente números."; exit 1 ;;
-    *) echo "Opção Inválida."; exit 1 ;;
+    [a-zA-Z]) echo -e "${RED}\nSomente números. \n ${RESET}"; exit 1 ;;
+    *) echo -e "${RED}\nOpção Inválida. \n ${RESET}"; exit 1 ;;
 esac
 
 # ----------------------------------------------------------------------------------------
