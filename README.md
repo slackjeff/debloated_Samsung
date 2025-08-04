@@ -1,3 +1,17 @@
+Debloat é um termo informal na área de tecnologia que significa remover ou desativar softwares indesejados, desnecessários ou 
+pré-instalados (bloatware) em um sistema.
+
+# 📱 Exemplo no Android:
+
+Em um celular Samsung, por exemplo, o "debloat" pode incluir:
+
+    Remover apps como: Samsung Daily, Bixby, Samsung Kids, etc.
+
+    Desativar serviços de operadoras.
+
+    Parar apps que rodam em segundo plano sem o consentimento do usuário.
+
+
 # Debloat Samsung devices
 
 Qualquer Smartphone Samsung se beneficia deste programa deixando até 100% mais rápido e consumindo menos bateria.
@@ -10,7 +24,7 @@ Qualquer Smartphone Samsung se beneficia deste programa deixando até 100% mais 
 ## Instalar e Executar
 
 ```bash
-git clone https://github.com/slackjeff/debloated_Samsung
+git clone https://github.com/tuxslack/debloated_Samsung
 cd debloated_Samsung
 bash run.sh
 ```
@@ -27,3 +41,6 @@ bash run.sh
 Este programa foi um fork (debloat_samsung_android) feito para Windows. Foi adaptado em Shell Script para executar em distribuições Linux.
 
 <https://github.com/invinciblevenom/debloat_samsung_android>
+
+slackjeff
+<https://github.com/slackjeff/debloated_Samsung>
