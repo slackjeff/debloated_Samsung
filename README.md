@@ -43,4 +43,5 @@ Este programa foi um fork (debloat_samsung_android) feito para Windows. Foi adap
 <https://github.com/invinciblevenom/debloat_samsung_android>
 
 slackjeff
+
 <https://github.com/slackjeff/debloated_Samsung>
