@@ -19,6 +19,18 @@ RESET='\033[0m'
 
 # ----------------------------------------------------------------------------------------
 
+# Captura Ctrl+C e exibe mensagem amigável
+
+# Ela captura o sinal SIGINT, que é enviado quando o usuário pressiona Ctrl+C, e executa 
+# o trecho entre aspas:
+
+trap 'echo -e "\n${YELLOW}Saindo...${RESET}"; exit 0' SIGINT
+
+# Assim, o script encerra de forma controlada, com uma mensagem limpa em vez de um 
+# encerramento abrupto.
+
+# ----------------------------------------------------------------------------------------
+
 # Habilita log de saída para arquivo
 
 LOGFILE="debloat_$(date +%F_%H%M%S).log"
@@ -28,6 +40,21 @@ exec > >(tee -a "$LOGFILE") 2>&1
 # Exibe onde o log está sendo salvo
 
 echo -e "\n📄 Log será salvo em: $LOGFILE\n"
+
+# ----------------------------------------------------------------------------------------
+
+######## Functions
+
+# Mensagem de erro
+
+function DIE() {
+
+    echo -e "${RED}\nERRO: $* \n ${RESET}" >&2
+    
+    exit 1
+}
+
+# Obs: A definição da função DIE deve esta sempre no início do script, antes de qualquer chamada a ela.
 
 # ----------------------------------------------------------------------------------------
 
@@ -131,19 +158,6 @@ echo -e "\n+---------------------------------------------+\n"
 
 # ----------------------------------------------------------------------------------------
 
-######## Functions
-
-# Mensagem de erro
-
-function DIE() {
-
-    echo -e "${RED}\nERRO: $* \n ${RESET}" >&2
-    
-    exit 1
-}
-
-# ----------------------------------------------------------------------------------------
-
 # Ajustes Iniciais
 
 function TWEAKS(){
@@ -225,8 +239,10 @@ function BASIC() {
     while read -r command; do
     
         # Ignorar comentários e linhas vazias nos .conf.
+        # Reativa nas leituras dos arquivos .conf.
         
         # [[ "$command" =~ ^#.*$ || -z "$command" ]] && continue
+        
          
         echo -e "${GREEN}\nDesinstalando: $command \n ${RESET}"
         
@@ -317,7 +333,8 @@ read -r -p "Você tem certeza que quer aplicar a limpeza pesada? (s/N): " confir
     while read -r command; do
 
         # Ignora linhas que começam com # ou contêm a palavra 'others'
-        
+        # Reativa nas leituras dos arquivos .conf.
+                
         # [[ "$command" =~ ^#.*$ || -z "$command" ]] && continue
 
               
