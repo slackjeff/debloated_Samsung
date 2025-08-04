@@ -151,8 +151,39 @@ function BASIC() {
         
     done < "$conf_fullpath"
 
+# ----------------------------------------------------------------------------------------
+
+    local conf_path="conf/samsung.conf"
+    local conf_fullpath="${PWD}/${conf_path}"
+    local command
+
+
+    # Verificando se o arquivo "$conf_fullpath" existe
+    
+    [[ -e "$conf_fullpath" ]] ||
+        DIE "O arquivo de configuração $conf_fullpath não foi encontrado."
+
+    echo -e "\n+++++++++++++++ Limpeza de Apps legados da Samsung e de operadoras \n"
+    
+    sleep 1s
+    
+    while read -r command; do
+    
+        # Ignora linhas que começam com # ou contêm a palavra 'others'
+        
+        echo "Desinstalando: $command"
+        
+        echo -e "\n[ADB] Executando: uninstall $command \n"
+        
+        adb shell -n pm uninstall --user 0 "$command"
+        
+    done < "$conf_fullpath"  
+
+# ----------------------------------------------------------------------------------------
 
     echo -e "\nFunção 'Limpeza Básica' finalizado com êxito. \n"
+
+    echo "=== Fim do processo. Reinicie o aparelho para aplicar ==="
 
 }
 
