@@ -16,6 +16,40 @@
 ###########################################################################
 
 
+# Ajuda
+
+
+# ✅ Como ativar o modo desenvolvedor no Android 5.1.1:
+
+
+#     Abra o menu "Configurações" (ícone de engrenagem).
+
+#     Role até o final e toque em "Sobre o dispositivo".
+
+#     Encontre e toque repetidamente em "Número da versão" (ou "Build number") 7 vezes.
+
+#         Uma contagem vai aparecer como: "Faltam X passos para se tornar um desenvolvedor".
+
+#         Ao final, aparecerá: "Agora você é um desenvolvedor!"
+
+#     Volte à tela principal das Configurações.
+
+#     Você verá um novo item: "Opções do desenvolvedor".
+
+
+
+# 🔧 (Opcional) Como ativar a Depuração USB:
+
+
+# Se você precisa usar o celular com um cabo USB para fins técnicos (como root, 
+# comandos ADB, ou Odin):
+
+#     Vá em Configurações > Opções do desenvolvedor.
+
+#     Ative a opção "Depuração USB".
+
+
+
 clear
 
 # ----------------------------------------------------------------------------------------
@@ -34,7 +68,10 @@ RESET='\033[0m'
 # Ela captura o sinal SIGINT, que é enviado quando o usuário pressiona Ctrl+C, e executa 
 # o trecho entre aspas:
 
-trap 'echo -e "\n${YELLOW}Saindo...${RESET}"; exit 0' SIGINT
+# trap 'echo -e "\n${YELLOW}Saindo...${RESET}"; exit 0' SIGINT
+
+trap 'echo -e "\n${YELLOW}Saindo... Limpando arquivos temporários.${RESET}"; rm -f /tmp/debloat_*.log; exit 0' SIGINT
+
 
 # Assim, o script encerra de forma controlada, com uma mensagem limpa em vez de um 
 # encerramento abrupto.
@@ -64,7 +101,10 @@ function DIE() {
 
     echo -e "${RED}\nERRO: $* \n ${RESET}" >&2
     
+    sleep 5
+
     exit 1
+
 }
 
 # Obs: A definição da função DIE deve esta sempre no início do script, antes de qualquer chamada a ela.
@@ -170,13 +210,21 @@ clear
 
 ######## Check
 
-if ! which adb 1>/dev/null 2>/dev/null; then
+if ! command -v adb >/dev/null 2>&1; then
 
     echo -e "${RED}\nErro. Instale o adb (android-tools).\n ${RESET}"
     
+    sleep 5
+
     exit 1
     
 else
+
+# ----------------------------------------------------------------------------------------
+
+# Verifique se o ADB está realmente funcionando:
+
+adb version >/dev/null 2>&1 || DIE "ADB não está funcionando corretamente."
 
 # ----------------------------------------------------------------------------------------
 
@@ -237,7 +285,7 @@ echo -e "\n+---------------------------------------------+\n"
 
 # Para listar todos os pacotes instalados:
 
-lista(){
+function lista(){
 
     echo -e "${YELLOW}\nPacotes instalados atualmente: \n${RESET}"
 
@@ -547,6 +595,132 @@ echo "
 
 # ----------------------------------------------------------------------------------------
 
+# Restaurar pacotes desinstalados com --user 0
+
+
+function restore_package() {
+
+
+# 🧪 Verificando se o pacote existe no sistema:
+
+# Antes de restaurar, você pode verificar se ele ainda está presente (mas desinstalado 
+# para o usuário):
+
+# adb shell pm list packages -s | grep chrome
+
+# Se retornar algo como:
+
+# package:com.android.chrome
+
+# Significa que ele ainda está presente na partição de sistema e pode ser restaurado.
+
+
+
+# Para restaurar o Chrome (reinstalar para o usuário atual após ter sido removido com 
+# pm uninstall --user 0), basta usar o comando:
+
+# ✅ Comando ADB para restaurar o Chrome:
+
+# adb shell cmd package install-existing com.android.chrome
+
+
+# 📌 Observações:
+# 
+#   Isso só funciona se o app ainda estiver presente no sistema (desinstalado apenas com 
+#   --user 0, não removido do /system ou /product).
+# 
+#   O comando install-existing não reinstala da Play Store; ele apenas reativa o app do 
+# sistema.
+
+
+# ❌ Se o app foi removido via root (ex: Magisk, TWRP ou adb root + rm)
+# 
+# Aí será necessário reinstalar via .apk manualmente:
+# 
+# adb install chrome.apk
+
+
+# Instalar o Google Chrome em um dispositivo Android abaixo da versão 6 (Marshmallow) tem 
+# limitações importantes, já que o Chrome moderno não oferece mais suporte a essas versões 
+# antigas.
+
+# Mas ainda é possível instalar versões antigas do Chrome manualmente via APK.
+
+
+# ✅ Como instalar o Chrome em Android abaixo de 6 (ex: Android 5.1)
+
+
+# 🔧 Requisitos:
+
+#     ADB instalado em seu PC.
+
+#     Depuração USB ativada no celular.
+
+#     Dispositivo reconhecido com adb devices.
+
+#     APK do Chrome compatível com a versão do Android.
+
+
+# Google Chrome 49.0.2623.91 (arm-v7a) (Android 5.0+)
+
+# https://www.apkmirror.com/apk/google-inc/chrome/chrome-49-0-2623-91-release/
+
+
+# ⚠️ Importante: Baixe sempre a variante correta (arm/arm64/x86) conforme seu dispositivo.
+
+
+# 📥 2. Instalar via ADB
+
+# Depois de baixar, renomeie para algo fácil, como chrome.apk.
+
+
+# Execute no terminal:
+
+# adb install chrome.apk
+
+
+# Se já tiver uma versão do Chrome instalada (inativa), use:
+
+# adb install -r chrome.apk
+
+
+
+    clear
+
+
+    echo -e "${GREEN}\n=== Restaurar aplicativo removido (usuário 0) ===${RESET}"
+
+    read -rp $'\nDigite o nome do pacote a restaurar (ex: com.android.chrome): ' pacote
+
+    [[ -z "$pacote" ]] && DIE "Nenhum pacote informado."
+
+    echo -e "\n${YELLOW}Restaurando pacote: $pacote ...${RESET}"
+
+    # /system/bin/sh: cmd: not found
+
+    adb shell cmd package install-existing "$pacote"
+
+    if [[ $? -eq 0 ]]; then
+
+        echo -e "\n${GREEN}✔️ Pacote $pacote restaurado com sucesso.${RESET} \n"
+
+    else
+
+        echo -e "\n${RED}❌ Falha ao restaurar o pacote $pacote.${RESET} \n"
+
+    fi
+
+    echo -e "\n${YELLOW}Dica:${RESET} use \`adb shell pm list packages\` para listar todos os pacotes disponíveis no sistema. \n"
+
+
+    sleep 10
+
+}
+
+
+
+# ----------------------------------------------------------------------------------------
+
 ########## Main
 
 
@@ -576,7 +750,8 @@ cat <<EOF
  2) - Limpeza Básica    - Conta Samsung/Samsung Health/Galaxy AI se mantém.
  3) - Limpeza moderada  - Para usuários sem uma conta Samsung.
  4) - Limpeza Pesada    - !!! Otimização máxima do sistema !!!
- 5) - Sair
+ 5) - Restaurar pacote
+ 0) - Sair
 EOF
 
 read -r -p $'\n Escolha [1-5]: ' menu
@@ -586,7 +761,8 @@ case $menu in
     2) BASIC ;;
     3) LIGHT ;;
     4) HEAVY ;;
-    5) exit 0 ;;
+    5) restore_package ;;
+    0) exit 0 ;;
     [a-zA-Z]) echo -e "${RED}\nSomente números. \n ${RESET}"; sleep 5 ; exit 1 ;;
     *) echo -e "${RED}\nOpção Inválida. \n ${RESET}"; sleep 5 ; exit 1 ;;
 esac
