@@ -1,0 +1,1288 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: debloat-android 1.0\n"
+"PO-Revision-Date: 2025-08-11 00:00+0000\n"
+"Last-Translator: Fernando Souza <https://www.youtube.com/@fernandosuporte>\n"
+"Language-Team: Equipe de Tradução de Português Brasileiro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+
+# O arquivo .po (gettext) aceita emojis, desde que esteja salvo em UTF-8
+
+
+# sudo msgfmt /usr/share/doc/debloat-android/locale/debloat-android-pt_BR.po -o /usr/share/locale/pt_BR/LC_MESSAGES/debloat-android.mo
+
+
+
+msgid  "Time's up!"
+msgstr "Tempo esgotado!"
+
+msgid  "Android device detected and ADB working"
+msgstr "Dispositivo Android detectado e ADB funcional"
+
+
+
+msgid ""
+"No ADB devices detected with USB debugging active and authorized."
+"\n"
+"\n"
+"Check if:"
+"\n"
+"\n"
+"  - The USB cable is connected correctly."
+"\n"
+"  - USB debugging is enabled in developer options."
+"\n"
+"  - You have authorized the connection on your phone (ADB dialog box)."
+"\n"
+
+
+msgstr ""
+"Nenhum dispositivo ADB detectado com depuração USB ativa e autorizada."
+"\n"
+"\n"
+"Verifique se:"
+"\n"
+"\n"
+"  - O cabo USB está conectado corretamente."
+"\n"
+"  - A depuração USB está ativada nas opções de desenvolvedor."
+"\n"
+"  - Você autorizou a conexão no celular (caixa de diálogo ADB)."
+"\n"
+
+
+
+msgid  "Error: %s is not installed."
+msgstr "Erro: %s não está instalado."
+
+
+msgid  "Checking if emoji fonts are installed..."
+msgstr "Verificando se fontes de emoji estão instaladas..."
+
+msgid  "Emoji font found: %s."
+msgstr "Fonte de emoji encontrada: %s."
+
+msgid  "Emoji font NOT found: %s."
+msgstr "Fonte de emoji NÃO encontrada: %s."
+
+msgid  "Verification completed for emoji fonts."
+msgstr "Verificação concluída para fontes de emoji."
+
+
+# O gettext funciona com strings contendo quebras de linha \n, desde que elas sejam usadas corretamente — tanto no script quanto no arquivo .po.
+
+# Não funciona
+
+
+# ❌ Problema
+
+# Essas duas strings parecem iguais, mas não são para o gettext.
+
+# O shell interpreta \n como uma barra + "n" (literal) ao passar a string pro gettext. Já 
+# o .po trata \n como caractere de nova linha real, após o .mo ser compilado.
+
+
+# msgid  "WARNING: This is Android version %s.\n\nThe 'cmd' command is NOT available in this version.\n\nCommands like 'cmd package install-existing' will NOT work.\n"
+# msgstr "ATENÇÃO: Esta é a versão Android %s.\n\nO comando 'cmd' NÃO está disponível nessa versão.\n\nComandos como 'cmd package install-existing' NÃO funcionarão.\n"
+
+
+# Funciona
+
+msgid ""
+"WARNING: This is Android version %s."
+"\n"
+"\n"
+"The 'cmd' command is NOT available in this version."
+"\n"
+"\n"
+"Commands like 'cmd package install-existing' will NOT work."
+"\n"
+
+msgstr ""
+"ATENÇÃO: Esta é a versão Android %s."
+"\n"
+"\n"
+"O comando 'cmd' NÃO está disponível nessa versão."
+"\n"
+"\n"
+"Comandos como 'cmd package install-existing' NÃO funcionarão."
+"\n"
+
+
+msgid  "Enter to continue..."
+msgstr "Enter para continuar..."
+
+
+msgid  "All set to go!"
+msgstr "Tudo pronto para começar!"
+
+
+
+
+msgid ""
+"\n"
+"\n"
+"\n"
+"⚠️  Use at your own risk!"
+"\n"
+"\n"
+"\n"
+"=== Starting to unbloat pre-installed apps on Android ==="
+"\n"
+"\n"
+"\n"
+"This script helps remove bloatware (apps pre-installed by the manufacturer or carrier) from Android devices."
+"\n"
+"\n"
+"⚠️  ATTENTION"
+"\n"
+"\n"
+"	This does not completely uninstall the apps, it just disables or removes them for the current user (pm uninstall --user 0)."
+"\n"
+"	Some apps are essential for basic functionality. Use with caution."
+"\n"
+"	This script must be run with the device connected via USB, with USB debugging enabled and with ADB configured on your system."
+"\n"
+"	You must have adb (android-tools) installed on your Linux distribution."
+"\n"
+"	Make sure Developer Option is ENABLED on your mobile."
+"\n"
+"\n"
+"\n"
+"🔁  Revert changes?"
+"\n"
+"\n"
+"Use:"
+"\n"
+"\n"
+"adb shell cmd package install-existing com.package.name"
+"\n"
+"\n"
+"\n"
+"⚠️  Care:"
+"\n"
+"\n"
+"    Removing with root may void your warranty."
+"\n"
+"    Modifying system files can cause a bootloop if done incorrectly."
+"\n"
+"    It is recommended to make a full backup first."
+"\n"
+
+
+
+msgstr ""
+"\n"
+"\n"
+"\n"
+"⚠️  Use por sua conta e risco!"
+"\n"
+"\n"
+"\n"
+"=== Iniciando desbloat de apps pré-instalados no Android ==="
+"\n"
+"\n"
+"\n"
+"Este script auxilia na remoção de bloatware (apps pré-instalados pelo fabricante ou operadora) de dispositivos Android."
+"\n"
+"\n"
+"\n"
+"⚠️  ATENÇÃO"
+"\n"
+"\n"
+"	Isso não desinstala completamente os apps, apenas os desativa ou remove para o usuário atual (pm uninstall --user 0)."
+"\n"
+"	Alguns apps são importantes para funcionalidades básicas. Use com cuidado."
+"\n"
+"	Este script deve ser executado com o dispositivo conectado via USB, com a depuração USB ativada e com o ADB configurado no seu sistema."
+"\n"
+"	É necessário ter o adb (android-tools) instalado em sua distribuição Linux."
+"\n"
+"	Certifique-se de que a Opção do Desenvolvedor esteja HABILITADA em seu celular."
+"\n"
+"\n"
+"\n"
+"🔁  Reverter mudanças?"
+"\n"
+"\n"
+"Use:"
+"\n"
+"\n"
+"adb shell cmd package install-existing com.nome.do.pacote"
+"\n"
+"\n"
+"\n"
+"⚠️  Cuidados:"
+"\n"
+"\n"
+"    Remoção com root pode invalidar a garantia."
+"\n"
+"    Modificar arquivos de sistema pode causar bootloop se feito incorretamente."
+"\n"
+"    Recomenda-se backup completo antes."
+"\n"
+
+
+
+
+
+
+msgid  "Exiting... Cleaning up temporary files."
+msgstr "Saindo... Limpando arquivos temporários."
+
+msgid  "Log will be saved to:"
+msgstr "Log será salvo em:"
+
+msgid  "ERROR"
+msgstr "ERRO"
+
+msgid  "Android version detected"
+msgstr "Versão do Android detectada"
+
+msgid  "Error: Could not correctly determine Android version."
+msgstr "Erro: não foi possível determinar corretamente a versão do Android."
+
+msgid  "Error. Please install adb (android-tools)."
+msgstr "Erro. Instale o adb (android-tools)."
+
+msgid  "ADB is not working properly."
+msgstr "ADB não está funcionando corretamente."
+
+msgid  "Device not authorized. Authorize the device on your phone screen."
+msgstr "Dispositivo não autorizado. Autorize o dispositivo na tela do seu celular."
+
+msgid  "Folder '/etc/debloat-android/' not found."
+msgstr "Pasta '/etc/debloat-android/' não encontrada."
+
+msgid  "Checking connected devices..."
+msgstr "Checando os dispositivos conectados..."
+
+msgid  "I didn't find any devices. Plug your phone into your computer."
+msgstr "Não encontrei nenhum dispositivo. Plugue seu celular no computador."
+
+msgid  "Connected devices"
+msgstr "Dispositivos conectados"
+
+msgid  "File generated in"
+msgstr "Arquivo gerado em"
+
+msgid  "ANDROID DEVICE INFORMATION"
+msgstr "INFORMAÇÕES DO DISPOSITIVO ANDROID"
+
+msgid  "Manufacturer"
+msgstr "Fabricante"
+
+msgid  "Model"
+msgstr "Modelo"
+
+msgid  "Android version"
+msgstr "Versão do Android"
+
+msgid  "Build Number"
+msgstr "Número da Build"
+
+msgid  "CPU Architecture"
+msgstr "Arquitetura da CPU"
+
+msgid  "Device Name"
+msgstr "Nome do Dispositivo"
+
+msgid  "Product Name"
+msgstr "Nome do Produto"
+
+msgid  "Platform"
+msgstr "Plataforma"
+
+msgid  "Low (probably 512 MB or 1 GB)"
+msgstr "Baixa (provavelmente 512 MB ou 1 GB)"
+
+msgid  "Unknown"
+msgstr "Desconhecido"
+
+msgid  "Storage"
+msgstr "Armazenamento"
+
+msgid  "Absent"
+msgstr "Ausente"
+
+msgid  "Present"
+msgstr "Presente"
+
+msgid  "Language"
+msgstr "Idioma"
+
+msgid  "System"
+msgstr "Sistema"
+
+msgid  "Bootloader"
+msgstr "Carregador de inicialização"
+
+msgid  "Baseband"
+msgstr "Banda base"
+
+msgid  "Security Patch"
+msgstr "Patch de segurança"
+
+msgid  "VPN version"
+msgstr "Versão VPN"
+
+msgid  "Active"
+msgstr "Ativo"
+
+msgid  "region"
+msgstr "região"
+
+msgid  "Time zone"
+msgstr "Fuso Horário"
+
+msgid  "USB Configuration"
+msgstr "Configuração USB"
+
+msgid  "Build Date"
+msgstr "Data da Build"
+
+msgid  "Serial number"
+msgstr "Número de série"
+
+msgid  "Total packages"
+msgstr "Total de pacotes"
+
+msgid  "Currently installed packages"
+msgstr "Pacotes instalados atualmente"
+
+msgid  "Information saved in"
+msgstr "Informações salvas em"
+
+msgid  "Enter to return to the main menu..."
+msgstr "Enter para voltar ao menu principal..."
+
+msgid  "Improve Battery, Performance and disable GPS Apps."
+msgstr "Melhore a Bateria, Performance e desative os Apps GOS."
+
+msgid  "Disabling the GOS application..."
+msgstr "Desabilitando o aplicativo GOS..."
+
+msgid  "GOS application disabled successfully!"
+msgstr "Aplicativo GOS desabilitado com sucesso!"
+
+msgid  "Failed to disable GOS application."
+msgstr "Falha ao desabilitar o aplicativo GOS."
+
+msgid  "Initial Adjustments completed successfully."
+msgstr "Ajustes Iniciais finalizado com êxito."
+
+msgid  "Starting removal of pre-installed bloatware..."
+msgstr "Iniciando remoção de bloatware pré-instalado..."
+
+msgid  "Basic Cleaning"
+msgstr "Limpeza Básica"
+
+msgid  "Cleanup of legacy Samsung and carrier apps"
+msgstr "Limpeza de Apps legados da Samsung e de operadoras"
+
+msgid  "Basic Cleaning completed successfully."
+msgstr "Limpeza Básica finalizada com êxito."
+
+msgid  "Removal complete. Restart your device to finish."
+msgstr "Remoção concluída. Reinicie o aparelho para finalizar."
+
+msgid  "Moderate Cleaning"
+msgstr "Limpeza Moderada"
+
+msgid  "Moderate Cleaning completed successfully."
+msgstr "Limpeza Moderada finalizada com êxito."
+
+msgid  "Are you sure you want to apply the heavy cleaning? [action is irreversible] (y/N)"
+msgstr "Você tem certeza que quer aplicar a limpeza pesada? [ação é irreversível] (s/N)"
+
+msgid  "Starting Heavy Cleaning"
+msgstr "Iniciando Limpeza Pesada"
+
+msgid  "Successfully removed"
+msgstr "Removido com sucesso"
+
+msgid  "[ADB] Running: adb shell cmd package install-existing com.sec.android.soagent"
+msgstr "[ADB] Executando: adb shell cmd package install-existing com.sec.android.soagent"
+
+msgid  "[ADB] Running: adb shell cmd package install-existing com.sec.android.systemupdate"
+msgstr "[ADB] Executando: adb shell cmd package install-existing com.sec.android.systemupdate"
+
+msgid  "Heavy cleaning completed successfully."
+msgstr "Limpeza pesada finalizada com êxito."
+
+msgid  "Enter the name of the package to restore (example: com.android.chrome)"
+msgstr "Digite o nome do pacote a restaurar (exemplo: com.android.chrome)"
+
+msgid  "No package reported."
+msgstr "Nenhum pacote informado."
+
+msgid  "Android < 6.0 detected. Using 'pm enable'..."
+msgstr "Android < 6.0 detectado. Usando 'pm enable'..."
+
+msgid  "Check if the App is still in the system"
+msgstr "Verificar se o App ainda está no sistema"
+
+msgid  "Starting game cleanup"
+msgstr "Iniciando limpeza de jogos"
+
+msgid  "Unable to get Android version."
+msgstr "Não foi possível obter a versão do Android."
+
+msgid  "Android SDK version"
+msgstr "Versão do SDK do Android"
+
+msgid  "Which AdGuard DNS do you want to configure?"
+msgstr "Qual DNS do AdGuard deseja configurar?"
+
+msgid  "AdGuard Standard"
+msgstr "AdGuard padrão"
+
+msgid  "AdGuard Family Protection"
+msgstr "Proteção Familiar AdGuard"
+
+msgid  "Choose an option"
+msgstr "Escolha uma opção"
+
+msgid  "Restarting Wi-Fi..."
+msgstr "Reiniciando Wi-Fi..."
+
+msgid  "AdGuard DNS successfully configured!"
+msgstr "DNS do AdGuard configurado com sucesso!"
+
+msgid  "Invalid option."
+msgstr "Opção inválida."
+
+msgid  "Do you want to continue removing bloatware for manufacturer"
+msgstr "Deseja continuar com a remoção de bloatware para o fabricante"
+
+msgid  "Operation cancelled by the user."
+msgstr "Operação cancelada pelo usuário."
+
+msgid  "Killing adb server..."
+msgstr "Matando o servidor adb..."
+
+
+
+# Menu
+
+
+msgid  "Bloatware Removal Tool via ADB"
+msgstr "Ferramenta de Remoção de Bloatware via ADB"
+
+
+msgid  "Initial Settings      → Configure AdGuard DNS and other optimizations"
+msgstr "Ajustes Iniciais      → Configurar o DNS AdGuard e outras otimizações"
+
+msgid  "Basic Cleanup        → Removes lightweight apps; keeps Samsung Account, Galaxy AI"
+msgstr "Limpeza Básica       → Remove apps leves; mantém Samsung Account, Galaxy AI"
+
+msgid  "Moderate Cleanup     → For users who don't have a Samsung account"
+msgstr "Limpeza Moderada     → Para usuários que não usam conta Samsung"
+
+msgid  "Deep Cleanup         → Full System Optimization (removes games and more)"
+msgstr "Limpeza Pesada       → Otimização total do sistema (remove jogos e mais)"
+
+msgid  "Restore App          → Reinstalls previously removed apps"
+msgstr "Restaurar aplicativo → Reinstala aplicativos removidos anteriormente"
+
+msgid  "List Apps            → Shows all apps installed on the device"
+msgstr "Listar aplicativos   → Mostra todos os aplicativos instalados no aparelho"
+
+msgid  "Application Management → Remove or disable an application"
+msgstr "Gerência Aplicativo    → Remover ou desativar um aplicativo"
+
+msgid  "Backup               → Automated Backup via ADB"
+msgstr "Backup               → Backup Automatizado via ADB"
+
+msgid  "Reset via ADB using recovery   → (universal method)"
+msgstr "Reset via ADB usando recovery  → (método universal)"
+
+msgid  "Restart your phone"
+msgstr "Reiniciar o celular"
+
+msgid  "Clear an app's cache or data"
+msgstr "Limpar cache ou dados de um aplicativo"
+
+msgid  "Reset system settings (such as brightness, sound, airplane mode, etc.) to default values"
+msgstr "Resetar as configurações do sistema (como brilho, som, modo avião, etc.) para os valores padrão"
+
+msgid  "Record Screen or Take a Print"
+msgstr "Gravar Tela ou Tirar Print"
+
+msgid  "Quick Diagnostics → Detailed information about battery, Wi-Fi, system and logs"
+msgstr "Diagnóstico Rápido   → Informações detalhadas sobre bateria, Wi-Fi, sistema e logs"
+
+msgid  "Format the device"
+msgstr "Formata o aparelho"
+
+msgid  "Exit                 → Terminates the script"
+msgstr "Sair                 → Encerra o script"
+
+msgid  "Only numbers."
+msgstr "Somente números."
+
+
+msgid  "Failed to remove: %s - Reason: %s"
+msgstr "Falha ao remover: %s - Motivo: %s"
+
+msgid  "Successfully removed: %s"
+msgstr "Removido com sucesso: %s"
+
+
+msgid  "Manufacturer detected: %s"
+msgstr "Fabricante detectado: %s"
+
+
+msgid  "The configuration file '%s' was not found."
+msgstr "O arquivo de configuração '%s' não foi encontrado."
+
+
+msgid  "Starting removal of pre-installed bloatware (%s)..."
+msgstr "Iniciando remoção de bloatware pré-instalado (%s)..."
+
+
+msgid  "[ADB] Running: adb shell -n pm uninstall --user 0 %s"
+msgstr "[ADB] Executando: adb shell -n pm uninstall --user 0 %s"
+
+
+msgid  "The configuration file %s was not found."
+msgstr "O arquivo de configuração %s não foi encontrado."
+
+
+msgid  "[ADB] Running: adb shell -n settings put global %s"
+msgstr "[ADB] Executando: adb shell -n settings put global %s"
+
+msgid  "Restoring package: %s ..."
+msgstr "Restaurando pacote: %s ..."
+
+
+msgid  "Restore removed application (user 0)"
+msgstr "Restaurar aplicativo removido (usuário 0)"
+
+
+msgid  "[ADB] Running: adb shell cmd package install-existing %s ..."
+msgstr "[ADB] Executando: adb shell cmd package install-existing %s ..."
+
+
+msgid  "Application %s restored successfully."
+msgstr "Aplicativo %s restaurado com sucesso."
+
+msgid  "Failed to restore application %s."
+msgstr "Falha ao restaurar o aplicativo %s."
+
+msgid  "[ADB] Running: adb shell pm install-existing %s ..."
+msgstr "[ADB] Executando: adb shell pm install-existing %s ..."
+
+msgid  "[ADB] Running: adb shell pm enable %s ..."
+msgstr "[ADB] Executando: adb shell pm enable %s ..."
+
+msgid  "Tip"
+msgstr "Dica"
+
+msgid  "use 'adb shell pm list packages' to list all available packages on the system."
+msgstr "use 'adb shell pm list packages' para listar todos os pacotes disponíveis no sistema."
+
+
+msgid  "Applying configuration with DNS: %s..."
+msgstr "Aplicando configuração com DNS: %s..."
+
+
+
+msgid ""
+"\n"
+"Install an APK manually"
+"\n"
+"\n"
+"\n"
+"If the App is actually uninstalled or corrupted, the most viable alternative without root is:"
+"\n"
+"\n"
+"     Download the APK compatible with your Android version. - https://www.apkmirror.com/"
+"\n"
+"     Transfer to mobile."
+"\n"
+"     Enable \"Unknown sources\"."
+"\n"
+"     Install the app manually."
+"\n"
+"\n"
+"⚠️  But be careful:"
+"\n"
+"\n"
+"    Unlike the Play Store, you take the risk when installing manually."
+"\n"
+"    You need to enable \"Unknown Sources\", which opens a temporary security backdoor."
+"\n"
+"    You may install an incompatible version if you don't choose the right APK for your architecture (example: %s)."
+
+
+
+
+msgstr ""
+"\n"
+"Instalar um APK manualmente"
+"\n"
+"\n"
+"\n"
+"Se o App estiver realmente desinstalado ou corrompido, a alternativa mais viável sem root é:"
+"\n"
+"\n"
+"     Baixe o APK compatível com a versão do Android. - https://www.apkmirror.com/"
+"\n"
+"     Transfira para o celular."
+"\n"
+"     Ative \"Fontes desconhecidas\"."
+"\n"
+"     Instale o app manualmente."
+"\n"
+"\n"
+"⚠️  Mas atenção:"
+"\n"
+"\n"
+"    Diferente da Play Store, você assume o risco ao instalar manualmente."
+"\n"
+"    Você precisa ativar \"Fontes desconhecidas\", o que abre uma porta temporária de segurança."
+"\n"
+"    Pode instalar uma versão incompatível se não escolher o APK certo para sua arquitetura (exemplo: %s)."
+
+
+
+
+
+
+
+msgid ""
+"Games considered potentially dangerous or malicious, which have already been detected as viruses, adware, spyware, or Trojans in security analyses."
+"\n"
+"\n"
+"❗ Some of these apps have been removed from the Play Store, but may still be circulating via APKs or alternative stores."
+"\n"
+"\n"
+"Some may even use generic icons and names, making them difficult to identify."
+"\n"
+"\n"
+"You can also install reliable security apps such as:"
+"\n"
+"\n"
+"    Malwarebytes"
+"\n"
+"\n"
+"    Panda Antivirus"
+"\n"
+"\n"
+"Avoid downloading APKs from third-party sites (unofficial sites), as they may contain viruses."
+
+
+
+msgstr ""
+"Jogos considerados potencialmente perigosos ou maliciosos, que já foram detectados como vírus, adware, spyware, ou trojans em análises de segurança."
+"\n"
+"\n"
+"❗ Alguns desses apps foram removidos da Play Store, mas podem ainda estar circulando via APKs ou lojas alternativas."
+"\n"
+"\n"
+"Alguns podem até usar ícones e nomes genéricos, dificultando a identificação."
+"\n"
+"\n"
+"Você também pode instalar apps confiáveis de segurança como:"
+"\n"
+"\n"
+"    Malwarebytes"
+"\n"
+"\n"
+"    Panda Antivirus"
+"\n"
+"\n"
+"Evite baixar APKs de terceiros (sites não oficiais), pois esses podem conter vírus."
+
+
+
+msgid  "Disabling automatic sending of application error reports on Android...\n\n[ADB] Running: adb shell settings put secure send_action_app_error 0"
+msgstr "Desativando o envio automático de relatórios de erro de aplicativos no Android...\n\n[ADB] Executando: adb shell settings put secure send_action_app_error 0"
+
+
+msgid  "The %s application is not present on the device. Nothing to do."
+msgstr "O aplicativo %s não está presente no dispositivo. Nada a fazer."
+
+
+msgid  "Application %s is present on the system."
+msgstr "Aplicativo %s está presente no sistema."
+
+msgid  "Application %s is NOT present on the system."
+msgstr "Aplicativo %s NÃO está presente no sistema."
+
+msgid  "Cannot restore because the package is not installed."
+msgstr "Não é possível restaurar porque o pacote não está instalado."
+
+msgid  "Application %s restored successfully (root mode)."
+msgstr "Aplicativo %s restaurado com sucesso (modo root)."
+
+msgid  "'su' not available or root access denied. Trying without root..."
+msgstr "'su' não disponível ou acesso root negado. Tentando sem root..."
+
+msgid  "Error encountered: \n%s"
+msgstr "Erro encontrado: \n%s"
+
+msgid  "The 'pm enable' command requires root on Android < 6.0. Device may not be rooted."
+msgstr "O comando 'pm enable' requer root em Android < 6.0. Dispositivo pode não estar rooteado."
+
+
+
+
+msgid  ""
+"Alternative on Android itself (no PC, no root):"
+"\n"
+"\n"
+"You can:"
+"\n"
+"\n"
+"Open the \"My Files\" or \"File Manager\" app."
+"\n"
+"\n"
+"Navigate to the folder where the app is located."
+"\n"
+"\n"
+"Tap the APK."
+"\n"
+"\n"
+"Allow installation from unknown sources."
+"\n"
+"\n"
+"Install normally."
+"\n"
+"\n"
+"❗ Important tip:"
+"\n"
+"\n"
+"After installing the APK manually, the app may not update via the Play Store if the signatures \nare different (the app will be marked as \"unofficial\")."
+
+
+msgstr ""
+"Alternativa no próprio Android (sem PC, sem root):"
+"\n"
+"\n"
+"Você pode:"
+"\n"
+"\n"
+"Abrir o app \"Meus Arquivos\" ou \"Gerenciador de Arquivos\"." 
+"\n"
+"\n"
+"Navegar até a pasta onde esta o aplicativo."
+"\n"
+"\n"
+"Tocar no APK."
+"\n"
+"\n"
+"Permitir instalação de fontes desconhecidas."
+"\n"
+"\n"
+"Instalar normalmente."
+"\n"
+"\n"
+"❗ Dica importante:"
+"\n"
+"\n"
+"Após instalar o APK manual, o aplicativo pode não atualizar via Play Store se as assinaturas \nforem diferentes (o app ficará como \"não oficial\""
+
+
+
+msgid  "Android version %s does not support DNS-over-TLS.\n\nAndroid 9 (API 28) or higher is required."
+msgstr "Android versão %s não é compatível com DNS-over-TLS.\n\nÉ necessário Android 9 (API 28) ou superior."
+
+
+msgid  "Uninstalling: %s"
+msgstr "Desinstalando: %s"
+
+
+msgid  "Application"
+msgstr "Aplicativo"
+
+msgid  "Adjustment"
+msgstr "Ajuste"
+
+
+msgid  "Reativando serviços essenciais do sistema (se necessário)..."
+msgstr "Re-enabling essential system services (if needed)..."
+
+
+
+msgid  "Application Manager via ADB"
+msgstr "Gerenciador de aplicativos via ADB"
+
+msgid  "Enter the name of the application (example: com.sec.android.usermanual)"
+msgstr "Digite o nome do aplicativo (exemplo: com.sec.android.usermanual)"
+
+msgid  "Uninstall for the current user (--user 0)"
+msgstr "Desinstalar para o usuário atual (--user 0)"
+
+msgid  "Disable (disable-user)"
+msgstr "Desativar (disable-user)"
+
+msgid  "Cancel"
+msgstr "Cancelar"
+
+msgid  "Removing application for current user..."
+msgstr "Removendo o aplicativo para o usuário atual..."
+
+msgid  "Disabling the application..."
+msgstr "Desativando o aplicativo..."
+
+msgid  "Operation canceled."
+msgstr "Operação cancelada."
+
+msgid  "Invalid option. Closing."
+msgstr "Opção inválida. Encerrando."
+
+msgid  "Operation completed."
+msgstr "Operação concluída."
+
+msgid  "Error: Package '%s' not found on device."
+msgstr "Erro: Pacote '%s' não encontrado no dispositivo."
+
+msgid  "What do you want to do with the application '%s'?"
+msgstr "O que você deseja fazer com o aplicativo '%s'?"
+
+msgid  "Restart your phone now..."
+msgstr "Reiniciar o celular agora..."
+
+msgid  "Detailed information was saved in /tmp/ADB Reports/"
+msgstr "Informações detalhadas foram salvas em /tmp/Relatórios ADB/"
+
+msgid  "Take a Print"
+msgstr "Tirar Print"
+
+msgid  "Record Screen"
+msgstr "Gravar Tela"
+
+msgid  "Choice"
+msgstr "Escolha"
+
+msgid  "Option"
+msgstr "Opção"
+
+msgid  "Command not executed: Only supported on Android 7 through 11 (API 24–30). Current version: %s"
+msgstr "Comando não executado: compatível apenas com Android 7 até 11 (API 24–30). Versão atual: %s"
+
+msgid  "Automated Backup via ADB"
+msgstr "Backup Automatizado via ADB"
+
+msgid  "Choose the backup type"
+msgstr "Escolha o tipo de backup"
+
+msgid  "Full backup (ADB backup – up to Android 11 - older devices)"
+msgstr "Backup completo (ADB backup – até Android 11 - dispositivos antigos)"
+
+msgid  "Backup only personal files (/sdcard) - [best option]"
+msgstr "Backup apenas de arquivos pessoais (/sdcard) - [melhor opção]"
+
+msgid  "Backup only installed APKs"
+msgstr "Backup apenas dos APKs instalados"
+
+msgid  "Starting full backup via adb backup..."
+msgstr "Iniciando backup completo via adb backup..."
+
+msgid  "Backup saved in: %s/full_backup.ab"
+msgstr "Backup salvo em: %s/full_backup.ab"
+
+msgid  "This method has been deprecated in Android 12+. Use option 2 or 3."
+msgstr "Este método foi descontinuado no Android 12+. Use opção 2 ou 3."
+
+msgid  "Backing up files from internal memory..."
+msgstr "Fazendo backup de arquivos da memória interna..."
+
+msgid  "Files copied to: %s/sdcard"
+msgstr "Arquivos copiados para: %s/sdcard"
+
+msgid  "Extracting list of installed applications..."
+msgstr "Extraindo lista de aplicativos instalados..."
+
+msgid  "Saving APK of: %s"
+msgstr "Salvando APK de: %s"
+
+msgid  "APKs saved in: %s/apks"
+msgstr "APKs salvos em: %s/apks"
+
+msgid  "Backup completed successfully."
+msgstr "Backup concluído com sucesso."
+
+msgid  "Enter the name of the application (example: com.whatsapp)"
+msgstr "Digite o nome do aplicativo (exemplo: com.whatsapp)"
+
+msgid  "Application '%s' is not installed."
+msgstr "Aplicativo '%s' não está instalado."
+
+msgid  "Checking Android version..."
+msgstr "Verificando versão do Android..."
+
+msgid  "Performing factory reset via broadcast (Android %s)..."
+msgstr "Executando reset de fábrica via broadcast (Android %s)..."
+
+msgid  "Press Enter to continue or CTRL+C to cancel..."
+msgstr "Pressione Enter para continuar ou CTRL+C para cancelar..."
+
+msgid  "Rebooting the device into recovery mode..."
+msgstr "Reiniciando o dispositivo em modo recovery..."
+
+msgid  "Device restarted. Use the volume and power buttons to manually perform a factory reset."
+msgstr "Dispositivo reiniciado. Use os botões de volume e power para fazer o factory reset manualmente."
+
+
+
+
+msgid ""
+"For reliable resets via ADB, we recommend:"
+"\n"
+"\n"
+"Use adb reboot recovery and reset manually."
+"\n"
+"\n"
+"Or use a custom recovery (TWRP)."
+"\n"
+"\n"
+"Or use dpm wipe-data with the device manager app."
+
+msgstr ""
+"Para resets confiáveis via ADB, recomenda-se:"
+"\n"
+"\n"
+"Usar adb reboot recovery e resetar manualmente."
+"\n"
+"\n"
+"Ou usar recovery customizado (TWRP)."
+"\n"
+"\n"
+"Ou usar dpm wipe-data com app administrador de dispositivo."
+
+
+
+
+msgid ""
+"✅ About the adb shell am broadcast -a android.intent.action.MASTER_CLEAR command"
+"\n"
+"\n"
+"📌 What does it do?"
+"\n"
+"\n"
+"This command triggers a factory reset intent via ADB, without"
+"\n"
+"user confirmation. It's a method used by systems or apps with special permissions"
+"\n"
+"(usually system apps or those with \"device admin\" permission)."
+
+
+msgstr ""
+"✅ Sobre o comando adb shell am broadcast -a android.intent.action.MASTER_CLEAR"
+"\n"
+"\n"
+"📌 O que ele faz?"
+"\n"
+"\n"
+"Esse comando dispara uma intenção de redefinição de fábrica (factory reset) via ADB, sem"
+"\n"
+"confirmação do usuário. É um método utilizado por sistemas ou apps com permissão especial"
+"\n"
+"(geralmente system apps ou com permissão de \"admin do dispositivo\")."
+
+
+
+
+
+msgid ""
+"adb shell pm clear package.name"
+"\n"
+"\n"
+"📌 What it does:"
+"\n"
+"\n"
+"This command clears all data and cache for an app, as if you had gone to \"Settings > Apps > Clear Data\"."
+"\n"
+"\n"
+"✅ Works on:"
+"\n"
+"\n"
+"All modern versions of Android, from Android 5.0 (Lollipop) to 14 (with some variations)."
+"\n"
+"As long as the app is installed on the current user (usually user 0)."
+"\n"
+"\n"
+"⚠️ Limitations:"
+"\n"
+"\n"
+"On Android 11+ (API 30+), some system-protected or enterprise-profile apps may not be cleared."
+"\n"
+"If the app is a system app, you may need to be rooted to clear everything."
+"\n"
+"On devices with multiple users, you may need to specify --user:"
+"\n"
+"adb shell pm clear --user 0 com.example.app"
+"\n"
+"\n"
+"Clears data for the specified app. Replace com.example.app with the target app package."
+
+
+
+msgstr ""
+"adb shell pm clear nome.do.pacote"
+"\n"
+"\n"
+"📌 O que faz:"
+"\n"
+"\n"
+"Esse comando limpa todos os dados e cache de um aplicativo, como se você tivesse ido em \"Configurações > Apps > Limpar dados\"."
+"\n"
+"\n"
+"✅ Funciona em:"
+"\n"
+"\n"
+"Todas as versões modernas do Android, desde o Android 5.0 (Lollipop) até o 14 (com algumas variações)."
+"\n"
+"Desde que o app esteja instalado no usuário corrente (geralmente o usuário 0)."
+"\n"
+"\n"
+"⚠️ Limitações:"
+"\n"
+"\n"
+"Em Android 11+ (API 30+), alguns apps protegidos pelo sistema ou de perfil corporativo podem não ser limpos."
+"\n"
+"Se o app for um app de sistema, pode ser necessário usar root para limpar tudo."
+"\n"
+"Em dispositivos com múltiplos usuários, você pode precisar especificar o --user:"
+"\n"
+"adb shell pm clear --user 0 com.exemplo.app"
+"\n"
+"\n"
+"Limpa dados do app especificado. Substitua com.exemplo.app pelo pacote do app alvo."
+
+
+
+
+
+msgid ""
+"Reset via ADB using recovery (universal method)"
+"\n"
+"\n"
+"This method works on most Androids (any version, 5 to 15) if you have access to recovery mode via ADB."
+"\n"
+"\n"
+"📦 Steps:"
+"\n"
+"\n"
+"Reboot to recovery:"
+"\n"
+"adb reboot recovery"
+"\n"
+"\n"
+"In recovery, use the volume and power buttons to navigate and select:"
+"\n"
+"\n"
+"\"Wipe data/factory reset\" → \"Yes\""
+"\n"
+"\n"
+"🟢 Compatible with:"
+"\n"
+"\n"
+"All devices with stock recovery (AOSP) or custom recovery (TWRP, etc.)"
+
+
+msgstr ""
+"Reset via ADB usando recovery (método universal)"
+"\n"
+"\n"
+"Este método funciona na maioria dos Androids (de qualquer versão, 5 até 15) se você tiver acesso ao modo recovery via ADB."
+"\n"
+"\n"
+"📦 Passos:"
+"\n"
+"\n"
+"Reboot para recovery:"
+"\n"
+"adb reboot recovery"
+"\n"
+"\n"
+"No recovery, você deve usar os botões de volume e power para navegar e selecionar:"
+"\n"
+"\n"
+"\"Wipe data/factory reset\" → \"Yes\""
+"\n"
+"\n"
+"🟢 Compatível com:"
+"\n"
+"\n"
+"Todos os dispositivos com recovery padrão (AOSP) ou recovery customizado (TWRP, etc.)"
+
+
+
+
+
+msgid ""
+"Do you want to reset your Android now (enter recovery mode)?"
+"\n"
+"\n"
+"This does NOT automatically reset your Android, but it does reboot you into recovery mode."
+"\n"
+"You'll need to reset it manually from the recovery menu."
+
+msgstr ""
+"Deseja resetar o Android agora (entrar no modo recovery)?"
+"\n"
+"\n"
+"Isso NÃO faz o reset automaticamente, mas reinicia para o recovery."
+"\n"
+"Você precisará fazer o reset manualmente pelo menu de recovery."
+
+
+
+
+
+
+
+msgid ""
+"⚠️  adb shell settings reset system"
+"\n"
+"\n"
+"📌 What it does:"
+"\n"
+"\n"
+"This command resets system settings (such as brightness, sound, airplane mode, etc.) to their default values."
+"\n"
+"\n"
+"✅ Works on:"
+"\n"
+"\n"
+"Android 7.0 to Android 11, in general."
+"\n"
+"\n"
+"On Android devices with full access to the settings command via ADB shell."
+"\n"
+"\n"
+"⚠️  Warning:"
+"\n"
+"\n"
+"On Android 12+, this command may have no visible effect or may return the error:"
+"\n"
+"\n"
+"Bad reset mode: system"
+"\n"
+"\n"
+"This happens because:"
+"\n"
+"\n"
+"The settings reset command has been limited or discontinued in newer versions."
+"\n"
+"The system \"namespace\" is sometimes not considered valid for resetting on Android 12+."
+"\n"
+"\n"
+"Android is increasingly restrictive of ADB commands that change settings without user consent."
+"\n"
+"\n"
+"\n"
+"🛠️  Alternatives on modern Android (12+):"
+"\n"
+"\n"
+"For newer versions, instead of resetting everything with a single command, you can edit specific settings, such as:"
+"\n"
+"\n"
+"adb shell settings put system screen_brightness 150"
+"\n"
+"adb shell settings put global airplane_mode_on 0"
+"\n"
+"adb shell am broadcast -a android.intent.action.AIRPLANE_MODE --ez state false"
+
+
+
+msgstr ""
+"⚠️  adb shell settings reset system"
+"\n"
+"\n"
+"📌 O que faz:"
+"\n"
+"\n"
+"Esse comando reseta as configurações do sistema (como brilho, som, modo avião, etc.) para os valores padrão."
+"\n"
+"\n"
+"✅ Funciona em:"
+"\n"
+"\n"
+"Android 7.0 até Android 11, em geral."
+"\n"
+"\n"
+"Em Androids com permissão de acesso total ao comando settings via ADB shell."
+"\n"
+"\n"
+"⚠️  Atenção:"
+"\n"
+"\n"
+"Em Android 12+, esse comando pode não ter efeito visível ou pode retornar erro:"
+"\n"
+"\n"
+"Bad reset mode: system"
+"\n"
+"\n"
+"Isso acontece porque:"
+"\n"
+"\n"
+"O comando settings reset foi limitado ou descontinuado em versões mais recentes."
+"\n"
+"O \"namespace\" system às vezes não é considerado válido para reset em Android 12+."
+"\n"
+"\n"
+"O Android está cada vez mais restritivo com comandos ADB que alteram configurações sem consentimento do usuário."
+"\n"
+"\n"
+"\n"
+"🛠️  Alternativas em Android moderno (12+):"
+"\n"
+"\n"
+"Para versões mais novas, em vez de resetar tudo com um só comando, você pode editar configurações específicas, como:"
+"\n"
+"\n"
+"adb shell settings put system screen_brightness 150"
+"\n"
+"adb shell settings put global airplane_mode_on 0"
+"\n"
+"adb shell am broadcast -a android.intent.action.AIRPLANE_MODE --ez state false"
+
+
+
+
+
+msgid  "Android %s detected. The 'cmd' command is available."
+msgstr "Android %s detectado. O comando 'cmd' está disponível."
+
+
+
+
+
+message=$(gettext " %s")
+
+$(printf "'$message'" "'$ver'")
+
+
+
+echo -e "\n${GREEN}✔️ $(printf "$message" "$command") ${RESET}\n"
+
+
+echo -e "\n${RED}❌ $(printf "$message" "$command" "$output") ${RESET}\n"
+
+
+
+
+
+
+$(gettext "")
+
+
+
+
+msgid ""
+""
+"\n"
+
+msgstr ""
+""
+"\n"
+
+

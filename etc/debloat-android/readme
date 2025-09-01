@@ -1,0 +1,102 @@
+
+Removendo bloatwares e aplicativos legados do seu celular com script.
+
+
+Os arquivos .conf são atualizados com base em relatos e testes de usuários.
+
+* tweaks.conf
+* basic.conf
+* light.conf
+* heavy.conf
+
+
+* Jogos                                   => jogos.conf
+
+
+* Apps da Acer                            => acer.conf
+* Apps da Alcatel                         => alcatel.conf
+* Apps da Allview                         => allview.conf
+* Apps da Asus                            => asus.conf
+* Apps da Bittium                         => bittium.conf
+* Apps da BlackBerry                      => blackberry.conf
+* Apps da Celkon                          => celkon.conf
+* Apps da Energizer                       => energizer.conf
+* Apps da Fairphone                       => fairphone.conf
+* Apps da Fujitsu                         => fujitsu.conf
+* Apps da Gigaset                         => gigaset.conf
+* Apps da Google                          => google.conf
+* Apps da Hisense                         => hisense.conf
+* Apps da HTC                             => htc.conf
+* Apps da Huawei                          => huawei.conf
+* Apps da iBall                           => iball.conf
+* Apps da InFocus                         => infocus.conf
+* Apps da Intex                           => intex.conf
+* Apps da iVOOMi                          => ivoomi.conf
+* Apps da Karbonn                         => karbonn.conf
+* Apps da Kyocera                         => kyocera.conf
+* Apps da Lava                            => lava.conf
+* Apps da Lenovo                          => lenovo.conf
+* Apps da LG                              => lg.conf
+* Apps da Meitu                           => meitu.conf
+* Apps da Meizu                           => meizu.conf
+* Apps da Micromax                        => micromax.conf
+* Apps da Motorola                        => motorola.conf
+* Apps da Nokia                           => nokia.conf
+* Apps da OnePlus                         => oneplus.conf
+* Apps Oppo                               => oppo.conf
+* Apps da Palm                            => palm.conf
+* Apps da Panasonic                       => panasonic.conf
+* Apps da Prestigio                       => prestigio.conf
+* Apps da Realme                          => realme.conf
+* Apps da Samsung                         => samsung.conf
+* Apps da Sharp                           => sharp.conf
+* Apps da Siemens                         => siemens.conf
+* Apps da Sony                            => sony.conf
+* Apps da Spice                           => spice.conf
+* Apps da Swipe                           => swipe.conf
+* Apps da Toshiba                         => toshiba.conf
+* Apps da Vaio                            => vaio.conf
+* Apps da Vivo                            => vivo.conf
+* Apps da Wileyfox                        => wileyfox.conf
+* Apps da Xiaomi                          => xiaomi.conf
+* Apps da Xolo                            => xolo.conf
+* Apps da YotaPhone                       => yotaphone.conf
+* Apps da ZTE                             => zte.conf
+
+
+
+
+apps de fábrica reaparecem após um reset de fábrica — e isso inclui os bloatwares da 
+Samsung, da operadora ou de parceiros como o AppsClub (Bemobi).
+
+
+O comando adb shell pm uninstall --user 0 <pacote> remove apenas para o usuário atual — não 
+apaga do dispositivo completamente.
+
+Portanto, após um reset, o Android reinstala esses apps para o usuário 0 novamente.
+
+
+Remoção via ADB após cada reset.
+
+
+
+Rootear um dispositivo Android permite que você tenha acesso total ao sistema (como 
+"administrador" no Linux). Isso inclui permissões para editar ou apagar apps de fábrica 
+de forma permanente, o que não é possível com ADB normal.
+
+
+⚠️ Antes de tudo: riscos do root
+
+    ❌ Anula a garantia
+
+    ❌ Pode impedir atualizações OTA
+
+    ❌ Pode bloquear apps bancários / pagamentos NFC
+
+    ⚠️ Pode "brickar" (inutilizar) o aparelho se feito incorretamente
+
+    ✅ Libera controle total sobre o sistema
+
+
+
+

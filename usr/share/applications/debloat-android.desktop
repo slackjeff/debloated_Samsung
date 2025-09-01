@@ -1,0 +1,82 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+
+# Nome do app
+
+Name=Android Debloat
+Name[pt_BR]=Remover Bloatware Android
+Name[en]=Android Debloat
+Name[es]=Eliminar Bloatware Android
+Name[fr]=Suppression des Bloatwares Android
+Name[de]=Android Bloatware entfernen
+Name[it]=Rimozione Bloatware Android
+
+
+# Isso ajuda alguns menus (como GNOME ou KDE) a identificar o tipo de aplicativo.
+
+# Nome genérico
+
+GenericName=Android App Remover
+GenericName[pt_BR]=Removedor de Aplicativos Android
+
+
+# Comentários/descrição
+
+Comment=Remove legacy Android bloatware via ADB
+Comment[pt_BR]=Remove aplicativos desnecessários do Android usando ADB
+Comment[en]=Remove preinstalled Android apps using ADB
+Comment[es]=Elimina apps preinstaladas de Android usando ADB
+Comment[fr]=Supprime les applications préinstallées d'Android via ADB
+Comment[de]=Entfernt vorinstallierte Android-Apps über ADB
+Comment[it]=Rimuove le app preinstallate Android tramite ADB
+
+
+# Caminho do script (ajuste conforme necessário)
+
+Exec=/usr/local/bin/debloat-android.sh
+
+# Trata diferentes fabricantes (Samsung, Xiaomi, Motorola, etc).
+
+
+# Ícone (substitua se quiser usar um ícone personalizado)
+
+# Pode usar um ícone mais neutro como android, preferences-system, ou um ícone personalizado.
+
+Icon=phone
+
+
+# Garante que o .desktop só apareça no menu se o script existir.
+
+TryExec=/usr/local/bin/debloat-android.sh
+
+
+# Por padrão, não é necessário, mas pode evitar que alguns ambientes o escondam.
+
+NoDisplay=false
+
+
+# Use X-GNOME-Autostart-enabled=false se não for autostart
+
+# Evita que o app seja considerado como algo que inicia com o sistema.
+
+X-GNOME-Autostart-enabled=false
+
+
+Terminal=true
+StartupNotify=false
+
+# Categoria de menu
+
+Categories=Utility;System;
+
+# Palavras-chave
+
+Keywords=Android;Debloat;ADB;Bloatware;Remove
+Keywords[pt_BR]=Android;Remover;ADB;Bloatware;Desinstalar;Desativar
+Keywords[en]=Android;Remove;ADB;Bloatware;Uninstall;Disable
+Keywords[es]=Android;Eliminar;ADB;Bloatware;Desinstalar;Desactivar
+Keywords[fr]=Android;Supprimer;ADB;Bloatware;Désinstaller;Désactiver
+Keywords[de]=Android;Entfernen;ADB;Bloatware;Deinstallieren;Deaktivieren
+Keywords[it]=Android;Rimuovere;ADB;Bloatware;Disinstallare;Disattivare
+
