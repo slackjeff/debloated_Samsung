@@ -1,0 +1,158 @@
+
+Changelog
+=========
+
+Padrão: inspirado no estilo Keep.
+
+
+
+Versão 1.1 - 2025-08-14
+--------------------------
+
+[Fernando Souza]
+
+  Script testado no Android 5.1.1.
+
+- [Adicionado] Divisão de bloatwares por fabricante (Samsung, Motorola, Xiaomi, etc.) em /etc/debloat-android/
+
+               * Aplicar remoções específicas dependendo da marca do aparelho.
+               * Tornar o script modular e adaptável a diferentes fabricantes.
+
+- [Adicionado] Remoção de jogos.
+- [Adicionado] Tratamento de erro.
+- [Adicionado] Opção para restaurar os aplicativos removidos.
+- [Adicionado] Suporte à configuração automática de DNS-over-TLS com AdGuard.
+- [Adicionado] Verificação de versão mínima do Android (API 28).
+
+- [Adicionado] Internacionalização do script (suporte a múltiplos idiomas):
+
+               * EN
+               * pt_BR
+
+
+- [Corrigido]  Mensagens que não apareciam corretamente ao usar `read -rp`.
+- [Adicionado] Remoção de jogos.
+- [Removido]   ASCII art
+- [Adicionado] Atalho ".desktop" criado para executar o script "/usr/local/bin/debloat-android.sh".
+
+               Xfce:
+
+               Aplicativos => Acessórios => Remover Bloatware Android
+
+
+- [Adicionado] Incluídos comentários aos arquivos .conf na pasta /etc/debloat-android/
+- [Adicionado] Incorporada fonte de emojis para aprimorar o suporte à exibição de caracteres especiais.
+
+
+- [Corrigido]       
+               Trocado:
+
+               echo -e "${YELLOW}$(gettext "Android version detected"): $ANDROID_VERSION ${RESET}"
+
+                ersão do Android detectada: 5.1.1
+
+               por
+
+               printf "%b\n" "${YELLOW}Versão do Android detectada: $ANDROID_VERSION${RESET}"
+
+               Versão do Android detectada: 5.1.1
+
+
+       printf imprime texto formatado com mais controle do que echo.
+
+       Ao contrário do echo -e, que nem sempre interpreta corretamente sequências especiais, 
+       printf "%b" garante que as sequências de escape ANSI (como cor) sejam processadas 
+       corretamente.
+
+
+- [Adicionado] Tratamento de erro para o comando  adb shell pm list packages | sort | grep "$pacote"
+
+
+
+- [BUG]
+
+
+ 2) - 🧹 Limpeza Básica       → Remove apps leves; mantém Samsung Account, Galaxy AI
+
+
+    printf "%b\n" "${YELLOW} $(gettext "Re-enabling essential system services (if needed)...") ${RESET}"
+
+
+
+
+ 5) - 🔄 Restaurar aplicativo → Reinstala aplicativos removidos anteriormente
+
+
+
+=== Restaurar aplicativo removido (usuário 0) ===  
+
+Versão do Android detectada: 5.1.1
+
+
+Digite o nome do pacote a restaurar (exemplo: com.android.chrome):
+com.android.chrome
+
+Restaurando pacote: com.android.chrome ... 
+Android < 6.0 detectado. Usando 'pm enable'...
+✔️ Aplicativo com.android.chrome está presente no sistema. 
+
+
+Verificar se o App ainda está no sistema: 
+
+
+[ADB] Executando: adb shell pm enable com.android.chrome ...  
+
+
+⚠️  'su' não disponível ou acesso root negado. Tentando sem root...  
+
+
+❌  Falha ao restaurar o aplicativo com.android.chrome.  
+
+⚠️  Error encountered: 
+  Error: java.lang.SecurityException: Permission Denial: attempt to change component state from pid=3376, uid=2000, package uid=10063
+⚠️  O comando 'pm enable' requer root em Android < 6.0. Dispositivo pode não estar rooteado. 
+
+📦 Alternativa no próprio Android (sem PC, sem root):
+
+Você pode:
+
+Abrir o app "Meus Arquivos" ou "Gerenciador de Arquivos".
+
+Navegar até a pasta onde esta o aplicativo.
+
+Tocar no APK.
+
+Permitir instalação de fontes desconhecidas.
+
+Instalar normalmente.
+
+❗ Dica importante:
+
+Após instalar o APK manual, o aplicativo pode não atualizar via Play Store se as assinaturas 
+forem diferentes (o app ficará como "não oficial"
+
+
+
+Dica: use 'adb shell pm list packages' para listar todos os pacotes disponíveis no sistema. 
+
+
+Enter para voltar ao menu principal...
+
+
+
+
+
+
+Versão 1.0 - 2025-03-02
+--------------------------
+
+[Jefferson Carneiro - Slackjeff]
+
+- Primeira versão do fork.
+- Projeto baseado em [debloat_samsung_android](https://github.com/invinciblevenom/debloat_samsung_android).
+- Transição de ambiente Windows para Linux.
+- Convertido os scripts .bat (Windows) para shell script .sh (Linux).
+- Estrutura reorganizada para facilitar manutenção e personalização.
+- [Adicionado] Menu interativo de remoção de bloatwares.
+
+

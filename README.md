@@ -24,15 +24,15 @@ Qualquer Smartphone Samsung se beneficia deste programa deixando até 100% mais 
 ## Instalar e Executar
 
 ```bash
-git clone https://github.com/tuxslack/debloated_Samsung
+git clone https://github.com/tuxslack/debloat-android
 
-cd debloated_Samsung/
+cd debloat-android/
 
 sudo mv -i etc /
 sudo mv -i usr /
 
 
-debloated_samsung.sh
+debloat-android.sh
 ```
 
 

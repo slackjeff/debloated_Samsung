@@ -1,0 +1,80 @@
+.
+├── etc
+│   └── debloat-android
+│       ├── acer.conf
+│       ├── alcatel.conf
+│       ├── allview.conf
+│       ├── asus.conf
+│       ├── basic.conf
+│       ├── bittium.conf
+│       ├── blackberry.conf
+│       ├── celkon.conf
+│       ├── commands.txt
+│       ├── energizer.conf
+│       ├── fairphone.conf
+│       ├── fujitsu.conf
+│       ├── gigaset.conf
+│       ├── google.conf
+│       ├── heavy.conf
+│       ├── hisense.conf
+│       ├── htc.conf
+│       ├── huawei.conf
+│       ├── iball.conf
+│       ├── infocus.conf
+│       ├── intex.conf
+│       ├── ivoomi.conf
+│       ├── jogos.conf
+│       ├── karbonn.conf
+│       ├── kyocera.conf
+│       ├── lava.conf
+│       ├── lenovo.conf
+│       ├── lg.conf
+│       ├── light.conf
+│       ├── meitu.conf
+│       ├── meizu.conf
+│       ├── micromax.conf
+│       ├── motorola.conf
+│       ├── nokia.conf
+│       ├── oneplus.conf
+│       ├── oppo.conf
+│       ├── palm.conf
+│       ├── panasonic.conf
+│       ├── prestigio.conf
+│       ├── readme
+│       ├── realme.conf
+│       ├── samsung.conf
+│       ├── sharp.conf
+│       ├── siemens.conf
+│       ├── sony.conf
+│       ├── spice.conf
+│       ├── swipe.conf
+│       ├── toshiba.conf
+│       ├── tweaks.conf
+│       ├── vaio.conf
+│       ├── vivo.conf
+│       ├── wileyfox.conf
+│       ├── xiaomi.conf
+│       ├── xolo.conf
+│       ├── yotaphone.conf
+│       └── zte.conf
+└── usr
+    ├── local
+    │   └── bin
+    │       └── debloat-android.sh
+    └── share
+        ├── applications
+        │   └── debloat-android.desktop
+        ├── doc
+        │   └── debloat-android
+        │       ├── ChangeLog
+        │       ├── README.md
+        │       ├── debloat-android.txt
+        │       └── locale
+        │           └── debloat-android-pt_BR.po
+        └── locale
+            └── pt_BR
+                └── LC_MESSAGES
+                    └── debloat-android.mo
+
+14 directories, 63 files
+
